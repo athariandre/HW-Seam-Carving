@@ -19,6 +19,7 @@ void initializeImage(Pixel image[][MAX_HEIGHT]) {
 
 void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned int& height) {
   // TODO: implement (part 1)
+  cout << "hi";
 }
 
 void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width, unsigned int height) {
