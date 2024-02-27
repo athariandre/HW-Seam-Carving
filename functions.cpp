@@ -47,10 +47,10 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   for(unsigned int i = 0; i < height; i++){
     for(unsigned int j = 0; j < width; j++){
       inFS >> pr >> pg >> pb;
-      if(!inFS.good()){
-        throw std::runtime_error("Invalid color value1");
+      if(inFS.fail()){
+        throw std::runtime_error("Invalid color value1" + (string)inFS.);
       }
-      if(pr >= 256 ){
+      if(pr >= 256){
         throw std::runtime_error("Invalid color value2");
       }
       if(pg >= 256 ){
