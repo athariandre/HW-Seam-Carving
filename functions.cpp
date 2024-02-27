@@ -51,7 +51,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
         throw std::runtime_error("Invalid color value");
       }
       Pixel p = {(short)pr,(short)pg,(short)pb};
-      image[i][j] = p;  
+      image[j][i] = p;  
     }
   }
 
@@ -73,7 +73,7 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
   outFS << "255" << endl;
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){
-      Pixel p = image[i][j];
+      Pixel p = image[j][i];
       outFS << p.r << " " << p.g << " " << p.b << " ";
     }
     outFS << endl;
