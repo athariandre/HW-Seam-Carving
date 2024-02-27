@@ -44,8 +44,8 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
 
   inFS >> maxcolorval;
 
-  for(int i = 0; i < height; i++){
-    for(int j = 0; j < width; j++){
+  for(unsigned int i = 0; i < height; i++){
+    for(unsigned int j = 0; j < width; j++){
       inFS >> pr >> pg >> pb;
       if(!inFS.good() || pr >= 256 || pb >= 256 || pg >= 256){
         throw std::runtime_error("Invalid color value");
@@ -71,8 +71,8 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
   outFS << "P3" << endl;
   outFS << width << " " << height << endl;
   outFS << "255" << endl;
-  for(int i = 0; i < height; i++){
-    for(int j = 0; j < width; j++){
+  for(unsigned int i = 0; i < height; i++){
+    for(unsigned int j = 0; j < width; j++){
       Pixel p = image[j][i];
       outFS << p.r << " " << p.g << " " << p.b << " ";
     }
