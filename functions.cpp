@@ -46,6 +46,10 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
 
   inFS >> maxcolorval;
 
+  if(inFS.fail() || maxcolorval != 255){
+    throw std::runtime_error("Invalid dimensions")
+  }
+
   for(unsigned int i = 0; i < height; i++){
     for(unsigned int j = 0; j < width; j++){
       inFS >> pr >> pg >> pb;
