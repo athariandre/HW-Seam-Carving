@@ -41,7 +41,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   inFS >> tempwidth >> tempheight;
   
   
-  if(inFS.fail() || tempwidth <= 0 || tempheight <= 0 || tempwidth > MAX_WIDTH || tempheight > MAX_HEIGHT){
+  if(inFS.fail() || tempwidth <= 0 || tempheight <= 0 || tempwidth > (int)MAX_WIDTH || tempheight > (int)MAX_HEIGHT){
     throw std::runtime_error("Invalid dimensions");
   }
 
