@@ -83,43 +83,43 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
 }
 
 unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
-  bool edgePixel = (x == 0 || y == 0 || x == (height-1) || y == (width-1));
+  bool edgePixel = (x == 0 || y == 0 || x == (width-1) || y == (height-1));
   int energy_total;
   int rx, bx, gx, ry, by, gy;
-  int xleft, xright, yup, ydown;
+  int xup, xdown, yright, yleft;
 
   if(edgePixel){
     if(x == 0){
-      xleft = height-1;
-      xright = x+1;
+      xup = width-1;
+      xdown = x+1;
     }
-    else if(x == height-1){
-      xleft = x-1;
-      xright = 0;
+    else if(x == width-1){
+      xup = x-1;
+      xdown = 0;
     }
     if(y == 0){
-      ydown = width-1;
-      yup = y+1;
+      yleft = height-1;
+      yright = y+1;
     }
-    else if(y == width-1){
-      ydown = x-1;
-      yup = 0;
+    else if(y == height-1){
+      yleft = x-1;
+      yright = 0;
     }
   }
   else{
-    xleft = x-1;
-    xright = x+1;
-    yup = y+1;
-    ydown = y-1;
+    xup = x-1;
+    xdown = x+1;
+    yright = y+1;
+    yleft = y-1;
   }
   
-  rx = image[xright][y].r - image[xleft][y].r;
-  gx = image[xright][y].g - image[xleft][y].g;
-  bx = image[xright][y].b - image[xleft][y].b;
+  rx = image[xdown][y].r - image[xup][y].r;
+  gx = image[xdown][y].g - image[xup][y].g;
+  bx = image[xdown][y].b - image[xup][y].b;
 
-  ry = image[x][yup].r - image[x][ydown].r;
-  gy = image[x][yup].g - image[x][ydown].g;
-  by = image[x][yup].b - image[x][ydown].b;
+  ry = image[x][yright].r - image[x][yleft].r;
+  gy = image[x][yright].g - image[x][yleft].g;
+  by = image[x][yright].b - image[x][yleft].b;
 
 
   rx*=rx;
