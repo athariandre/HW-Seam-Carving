@@ -87,34 +87,34 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
   unsigned int energy_total;
 
   if(!edgePixel){
-    rx = image[y][x+1].r - image[y][x-1].r;
-    bx = image[y][x+1].g - image[y][x-1].g;
-    gx = image[y][x+1].b - image[y][x-1].b;
+    int rx = image[y][x+1].r - image[y][x-1].r;
+    int bx = image[y][x+1].g - image[y][x-1].g;
+    int gx = image[y][x+1].b - image[y][x-1].b;
 
-    ry = image[y+1][x].r - image[y-1][x].r;
-    by = image[y+1][x].g - image[y-1][x].g;
-    gy = image[y+1][x].b - image[y-1][x].b;
+    int ry = image[y+1][x].r - image[y-1][x].r;
+    int by = image[y+1][x].g - image[y-1][x].g;
+    int gy = image[y+1][x].b - image[y-1][x].b;
   }
   else{
     if(x == 0){
-      rx = image[y][x+1].r - image[y][width-1].r;
-      gx = image[y][x+1].g - image[y][width-1].g;
-      bx = image[y][x+1].b - image[y][width-1].b;
+      int rx = image[y][x+1].r - image[y][width-1].r;
+      int gx = image[y][x+1].g - image[y][width-1].g;
+      int bx = image[y][x+1].b - image[y][width-1].b;
     }
     if(x == (width-1)){
-      rx = image[y][0].r - image[i][x-1].r;
-      gx = image[y][0].g - image[i][x-1].g;
-      bx = image[y][0].b - image[i][x-1].b;
+      int rx = image[y][0].r - image[i][x-1].r;
+      int gx = image[y][0].g - image[i][x-1].g;
+      int bx = image[y][0].b - image[i][x-1].b;
     }
     if(y == 0){
-      ry = image[y+1][x].r - image[height-1][x].r;
-      gy = image[y+1][x].g - image[height-1][x].g;
-      by = image[y+1][x].b - image[height-1][x].b;
+      int ry = image[y+1][x].r - image[height-1][x].r;
+      int gy = image[y+1][x].g - image[height-1][x].g;
+      int by = image[y+1][x].b - image[height-1][x].b;
     }
     if(y == (height-1)){
-      ry = image[0][x].r - image[y-1][x].r;
-      gy = image[0][x].g - image[y-1][x].g;
-      by = image[0][x].b - image[y-1][x].b;
+      int ry = image[0][x].r - image[y-1][x].r;
+      int gy = image[0][x].g - image[y-1][x].g;
+      int by = image[0][x].b - image[y-1][x].b;
     }
   }
 
