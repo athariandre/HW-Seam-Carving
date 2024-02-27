@@ -118,10 +118,16 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
       by = image[0][x].b - image[y-1][x].b;
     }
   }
+  rx*=rx;
+  gx*=gx;
+  bx*=bx;
+  ry*=ry;
+  gy*=gy;
+  by*=by;
 
-  energy_total = (rx*rx + gx*gx + by*by) + (ry*ry + gy*gy + by*by);
+  energy_total = (rx+gx+bx+ry+by+gy);
 
-  return (unsigned int)gx;
+  return energy_total;
 }
 
 // uncomment functions as you implement them (part 2)
