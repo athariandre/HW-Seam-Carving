@@ -113,21 +113,13 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
     ydown = y-1;
   }
   
-  // rx = image[xright][y].r - image[xleft][y].r;
-  // gx = image[xright][y].g - image[xleft][y].g;
-  // bx = image[xright][y].b - image[xleft][y].b;
+  rx = image[xright][y].r - image[xleft][y].r;
+  gx = image[xright][y].g - image[xleft][y].g;
+  bx = image[xright][y].b - image[xleft][y].b;
 
-  // ry = image[x][yup].r - image[x][ydown].r;
-  // gy = image[x][yup].g - image[x][ydown].g;
-  // by = image[x][yup].b - image[x][ydown].b;
-
-  rx = image[y][xright].r - image[y][xleft].r;
-  gx = image[y][xright].g - image[y][xleft].g;
-  bx = image[y][xright].b - image[y][xleft].b;
-
-  ry = image[yup][x].r - image[ydown][x].r;
-  gy = image[yup][x].g - image[ydown][x].g;
-  by = image[yup][x].b - image[ydown][x].b;
+  ry = image[x][yup].r - image[x][ydown].r;
+  gy = image[x][yup].g - image[x][ydown].g;
+  by = image[x][yup].b - image[x][ydown].b;
 
 
   rx*=rx;
