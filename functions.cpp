@@ -83,8 +83,44 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
 }
 
 unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
-  // TODO: implement (part 1)
-  return 0;
+  bool edgePixel = (x == 0 || y == 0 || x == (width-1) || y == (height-1));
+  unsigned int energy_total;
+
+  if(!edgePixel){
+    rx = image[y][x+1].r - image[y][x-1].r;
+    bx = image[y][x+1].g - image[y][x-1].g;
+    gx = image[y][x+1].b - image[y][x-1].b;
+
+    ry = image[y+1][x].r - image[y-1][x].r;
+    by = image[y+1][x].g - image[y-1][x].g;
+    gy = image[y+1][x].b - image[y-1][x].b;
+  }
+  else{
+    if(x == 0){
+      rx = image[y][x+1].r - image[y][width-1].r;
+      gx = image[y][x+1].g - image[y][width-1].g;
+      bx = image[y][x+1].b - image[y][width-1].b;
+    }
+    if(x == (width-1)){
+      rx = image[y][0].r - image[i][x-1].r;
+      gx = image[y][0].g - image[i][x-1].g;
+      bx = image[y][0].b - image[i][x-1].b;
+    }
+    if(y == 0){
+      ry = image[y+1][x].r - image[height-1][x].r;
+      gy = image[y+1][x].g - image[height-1][x].g;
+      by = image[y+1][x].b - image[height-1][x].b;
+    }
+    if(y == (height-1)){
+      ry = image[0][x].r - image[y-1][x].r;
+      gy = image[0][x].g - image[y-1][x].g;
+      by = image[0][x].b - image[y-1][x].b;
+    }
+  }
+
+  energy_total = (rx*rx + gx*gx + by*by) + (ry*ry + gy*gy + by*by)
+
+  return energy_total;
 }
 
 // uncomment functions as you implement them (part 2)
