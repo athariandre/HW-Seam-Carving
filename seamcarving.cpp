@@ -41,7 +41,7 @@ int main() {
   cin >> targetHeight;
 
 
-  if(targetWidth < 0 || targetWidth > width || targetHeight < 0 || targetHeight > height){
+  if(targetWidth < 0 || targetWidth > (int)width || targetHeight < 0 || targetHeight > (int)height){
     cout << "Invalid target dimensions";
     return 1;
   }
