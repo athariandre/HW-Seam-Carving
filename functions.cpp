@@ -121,7 +121,7 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
 
   energy_total = (rx*rx + gx*gx + by*by) + (ry*ry + gy*gy + by*by);
 
-  return (unsigned int)rx;
+  return (unsigned int)gx;
 }
 
 // uncomment functions as you implement them (part 2)
