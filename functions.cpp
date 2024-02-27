@@ -35,18 +35,14 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   if(filetype != "P3" && filetype != "p3"){
     throw std::runtime_error("Invalid type " + filetype);
   }
-
-  int tempwidth;
-  int tempheight;
-  inFS >> tempwidth >> tempheight;
+  
+  inFS >> width >> height;
   
   
-  if(inFS.fail() || tempwidth <= 0 || tempheight <= 0 || tempwidth > (int)MAX_WIDTH || tempheight > (int)MAX_HEIGHT){
-    throw std::runtime_error("Invalid dimensions");
+  if(inFS.fail() || width > MAX_WIDTH || height > MAX_HEIGHT){
+    throw std::runtime_error("")
   }
 
-  width = tempwidth;
-  height = tempheight;
 
   inFS >> maxcolorval;
 
