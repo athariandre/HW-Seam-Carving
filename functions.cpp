@@ -40,18 +40,17 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   if(!inFS.good()){
     throw std::runtime_error("Invalid dimensions");
   }
-
-
+  
   inFS >> maxcolorval;
 
-  for(unsigned int i = 0; i < height; i++){
-    for(unsigned int j = 0; j < width; j++){
+  for(unsigned int i = 0; i < width; i++){
+    for(unsigned int j = 0; j < height; j++){
       inFS >> pr >> pg >> pb;
       if(!inFS.good() || pr >= 256 || pb >= 256 || pg >= 256){
         throw std::runtime_error("Invalid color value");
       }
       Pixel p = {(short)pr,(short)pg,(short)pb};
-      image[j][i] = p;  
+      image[i][j] = p;  
     }
   }
 
@@ -71,9 +70,9 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
   outFS << "P3" << endl;
   outFS << width << " " << height << endl;
   outFS << "255" << endl;
-  for(unsigned int i = 0; i < height; i++){
-    for(unsigned int j = 0; j < width; j++){
-      Pixel p = image[j][i];
+  for(unsigned int i = 0; i < width; i++){
+    for(unsigned int j = 0; j < height; j++){
+      Pixel p = image[i][j];
       outFS << p.r << " " << p.g << " " << p.b << " ";
     }
     outFS << endl;
