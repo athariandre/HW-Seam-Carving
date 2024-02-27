@@ -40,6 +40,12 @@ int main() {
   cout << "Input target height: ";
   cin >> targetHeight;
 
+
+  if(targetWidth < 0 || targetWidth > width || targetHeight < 0 || targetHeight > height){
+    cout << "Invalid target dimensions";
+    return 1;
+  }
+
   // TODO: add code to validate input (part 1)
   // Exit program with error if there are problems with 
   //   targetWidth or targetHeight
