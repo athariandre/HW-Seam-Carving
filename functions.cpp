@@ -119,7 +119,7 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
     }
   }
 
-  energy_total = (rx*rx + gx*gx + by*by) + (ry*ry + gy*gy + by*by)
+  energy_total = (rx*rx + gx*gx + by*by) + (ry*ry + gy*gy + by*by);
 
   return energy_total;
 }
