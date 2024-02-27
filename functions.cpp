@@ -86,38 +86,41 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
   bool edgePixel = (x == 0 || y == 0 || x == (width-1) || y == (height-1));
   int energy_total;
   int rx, bx, gx, ry, by, gy;
+  int xleft, xright, yup, ydown
 
-  if(!edgePixel){
-    rx = image[y][x+1].r - image[y][x-1].r;
-    bx = image[y][x+1].g - image[y][x-1].g;
-    gx = image[y][x+1].b - image[y][x-1].b;
-
-    ry = image[y+1][x].r - image[y-1][x].r;
-    by = image[y+1][x].g - image[y-1][x].g;
-    gy = image[y+1][x].b - image[y-1][x].b;
-  }
-  else{
+  if(edgePixel){
     if(x == 0){
-      rx = image[y][x+1].r - image[y][width-1].r;
-      gx = image[y][x+1].g - image[y][width-1].g;
-      bx = image[y][x+1].b - image[y][width-1].b;
+      xleft = width-1;
+      xright = x+1;
     }
-    else if(x == (width-1)){
-      rx = image[y][0].r - image[y][x-1].r;
-      gx = image[y][0].g - image[y][x-1].g;
-      bx = image[y][0].b - image[y][x-1].b;
+    else if(x == width-1){
+      xleft = x-1;
+      xright = 0;
     }
     if(y == 0){
-      ry = image[y+1][x].r - image[height-1][x].r;
-      gy = image[y+1][x].g - image[height-1][x].g;
-      by = image[y+1][x].b - image[height-1][x].b;
+      ydown = height-1;
+      yup = y+1;
     }
-    if(y == (height-1)){
-      ry = image[0][x].r - image[y-1][x].r;
-      gy = image[0][x].g - image[y-1][x].g;
-      by = image[0][x].b - image[y-1][x].b;
+    else if(x == width-1){
+      ydown = x-1;
+      yup = 0;
     }
   }
+  else{
+    xleft = x-1;
+    xright = x+1;
+    yup = y+1;
+    ydown = y-1;
+  }
+  
+  rx = image[xright][y].r - image[xleft][y].r;
+  gx = image[xright][y].g - image[xleft][y].g;
+  bx = image[xright][y].b - image[xleft][y].b;
+
+  ry = image[x][yup].r - image[x][ydown].r;
+  gy = image[x][yup].g - image[x][ydown].g;
+  by = image[x][yup].b - image[x][ydown].b;
+
 
   rx*=rx;
   gx*=gx;
