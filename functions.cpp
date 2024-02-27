@@ -84,7 +84,7 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
 
 unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
   bool edgePixel = (x == 0 || y == 0 || x == (width-1) || y == (height-1));
-  unsigned int energy_total;
+  int energy_total;
   int rx, bx, gx, ry, by, gy;
 
   if(!edgePixel){
@@ -102,10 +102,10 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
       gx = image[y][x+1].g - image[y][width-1].g;
       bx = image[y][x+1].b - image[y][width-1].b;
     }
-    if(x == (width-1)){
-      rx = image[y][0].r - image[x][x-1].r;
-      gx = image[y][0].g - image[x][x-1].g;
-      bx = image[y][0].b - image[x][x-1].b;
+    else if(x == (width-1)){
+      rx = image[y][0].r - image[y][x-1].r;
+      gx = image[y][0].g - image[y][x-1].g;
+      bx = image[y][0].b - image[y][x-1].b;
     }
     if(y == 0){
       ry = image[y+1][x].r - image[height-1][x].r;
@@ -119,16 +119,17 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
     }
   }
 
-  // rx*=rx;
-  // gx*=gx;
-  // bx*=bx;
-  // ry*=ry;
-  // gy*=gy;
-  // by*=by;
+  rx*=rx;
+  gx*=gx;
+  bx*=bx;
+  ry*=ry;
+  gy*=gy;
+  by*=by;
 
   energy_total = (rx+gx+bx+ry+by+gy);
 
-  return energy_total;
+  energy_total = std::abs(energy_total);
+  return (unsigned int)energy_total;
 }
 
 // uncomment functions as you implement them (part 2)
