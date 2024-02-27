@@ -103,9 +103,9 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
       bx = image[y][x+1].b - image[y][width-1].b;
     }
     if(x == (width-1)){
-      rx = image[y][0].r - image[i][x-1].r;
-      gx = image[y][0].g - image[i][x-1].g;
-      bx = image[y][0].b - image[i][x-1].b;
+      rx = image[y][0].r - image[x][x-1].r;
+      gx = image[y][0].g - image[x][x-1].g;
+      bx = image[y][0].b - image[x][x-1].b;
     }
     if(y == 0){
       ry = image[y+1][x].r - image[height-1][x].r;
