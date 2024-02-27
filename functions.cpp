@@ -4,7 +4,7 @@
 #include <cmath>
 #include "functions.h"
 
-using std::cout, std::endl, std::string;
+using std::cout, std::endl, std::string, std::cin;
 
 void initializeImage(Pixel image[][MAX_HEIGHT]) {
   // iterate through columns
@@ -18,12 +18,66 @@ void initializeImage(Pixel image[][MAX_HEIGHT]) {
 }
 
 void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned int& height) {
-  // TODO: implement (part 1)
-  cout << "hi";
+  std::ifstream inFS;
+  string filetype;
+  string garbage;
+  int maxcolorval;
+  unsigned short pr;
+  unsigned short pg;
+  unsigned short pb;
+  inFS.open('filename');
+  if(!inFS.is_open()){
+    throw std::runtime_error("Failed to open " + filename);
+  }
+
+  inFS >> filetype;
+
+  if(filetype != "P3" && filetype != "p3"){
+    throw std::runtime_error("Invalid type " + filetype);
+  }
+
+  inFS >> width >> height;
+  if(!inFS.good()){
+    throw std::runtime_error("Invalid dimensions");
+  }
+
+
+  inFS >> maxcolorval;
+
+  for(int i = 0; i < height; i++){
+    for(int j = 0; j < width; j++){
+      inFS >> pr >> pg >> pb;
+      if(!inFS.good() || pr >= 256 || pb >= 256 || pg >= 256){
+        throw std::runtime_error("Invalid color value")
+      }
+      Pixel p = {pr,pg,pb};
+      image[i][j] = p;  
+    }
+  }
+
+  inFS >> garbage
+  if(!inFS.eof()){
+    throw std::runtime_error("Too many values")
+  }
 }
 
 void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width, unsigned int height) {
-  // TODO: implement (part 1)
+  std::ofstream outFS;
+  outFS.open(filename);
+  if(!outFS.is_open()){
+    throw runtime_error("Failed to open " + filename);
+  }
+
+  outFS << "P3" << endl;
+  outFS << width << " " << height << endl;
+  outFS << "255" << endl;
+  for(int i = 0; i < height; i++){
+    for(int j = 0; j < width; j++){
+      Pixel p = image[i][j];
+      outFS << p.r << " " << p.g << " " << p.b << " ";
+    }
+    outFS << endl;
+  }
 }
 
 unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
