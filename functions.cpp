@@ -86,7 +86,7 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
   bool edgePixel = (x == 0 || y == 0 || x == (width-1) || y == (height-1));
   int energy_total;
   int rx, bx, gx, ry, by, gy;
-  int xleft, xright, yup, ydown
+  int xleft, xright, yup, ydown;
 
   if(edgePixel){
     if(x == 0){
