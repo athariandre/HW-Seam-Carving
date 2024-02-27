@@ -36,8 +36,12 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
     throw std::runtime_error("Invalid type " + filetype);
   }
 
-  inFS >> width >> height;
-  if(!(inFS.good() && width > 0 && height > 0 && width <= MAX_WIDTH && height <= MAX_HEIGHT)){
+  int tempwidth;
+  int tempheight;
+  inFS >> tempwidth >> tempheight;
+  
+  
+  if(inFS.fail() || tempwidth <= 0 || tempheight <= 0 || tempwidth > MAX_WIDTH || tempheight > MAX_HEIGHT){
     throw std::runtime_error("Invalid dimensions");
   }
 
@@ -83,6 +87,7 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
 }
 
 unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, unsigned int width, unsigned int height) {
+
 
   int energy_total;
   int rx, bx, gx, ry, by, gy;
