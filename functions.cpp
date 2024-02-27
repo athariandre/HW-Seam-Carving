@@ -55,7 +55,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
     }
   }
 
-  inFS >> garbage
+  inFS >> garbage;
   if(!inFS.eof()){
     throw std::runtime_error("Too many values");
   }
@@ -65,7 +65,7 @@ void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width,
   std::ofstream outFS;
   outFS.open(filename);
   if(!outFS.is_open()){
-    throw runtime_error("Failed to open " + filename);
+    throw std::runtime_error("Failed to open " + filename);
   }
 
   outFS << "P3" << endl;
