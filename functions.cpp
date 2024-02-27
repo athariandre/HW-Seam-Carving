@@ -88,30 +88,27 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
   int rx, bx, gx, ry, by, gy;
   int xleft, xright, yup, ydown;
 
-  if(edgePixel){
-    if(x == 0){
-      xleft = width-1;
-      xright = x+1;
-    }
-    else if(x == width-1){
-      xleft = x-1;
-      xright = 0;
-    }
-    if(y == 0){
-      ydown = height-1;
-      yup = y+1;
-    }
-    else if(y == height-1){
-      ydown = y-1;
-      yup = 0;
-    }
+  int xmax = width-1;
+  int ymax = height-1;
+
+  xleft = x-1;
+  xright = x+1;
+  yup = y+1;
+  ydown = y-1;
+
+  if(xleft < 0){
+    xleft = xmax;
   }
-  else{
-    xleft = x-1;
-    xright = x+1;
-    yup = y+1;
-    ydown = y-1;
+  if(xright > xmax){
+    xright = 0;
   }
+  if(ydown < 0){
+    ydown = ymax;
+  }
+  if(yup > ymax){
+    yup = 0;
+  }
+
   
   rx = image[xright][y].r - image[xleft][y].r;
   gx = image[xright][y].g - image[xleft][y].g;
