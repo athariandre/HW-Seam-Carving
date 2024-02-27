@@ -25,7 +25,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   unsigned short pr;
   unsigned short pg;
   unsigned short pb;
-  inFS.open('filename');
+  inFS.open(filename);
   if(!inFS.is_open()){
     throw std::runtime_error("Failed to open " + filename);
   }
