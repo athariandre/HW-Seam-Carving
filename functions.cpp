@@ -56,7 +56,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
       if(pg >= 256 ){
         throw std::runtime_error("Invalid color value3");
       }
-      if(br >= 256 ){
+      if(pb >= 256 ){
         throw std::runtime_error("Invalid color value4");
       }
       
