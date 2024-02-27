@@ -101,7 +101,7 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
       ydown = height-1;
       yup = y+1;
     }
-    else if(x == width-1){
+    else if(y == height-1){
       ydown = x-1;
       yup = 0;
     }
