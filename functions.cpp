@@ -131,7 +131,6 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
 
   energy_total = (rx+gx+bx+ry+by+gy);
 
-  energy_total = std::abs(energy_total);
   return (unsigned int)energy_total;
 }
 
