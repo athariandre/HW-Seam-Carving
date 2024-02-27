@@ -36,7 +36,13 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
     throw std::runtime_error("Invalid type " + filetype);
   }
   
-  inFS >> width >> height;
+
+  string line;
+  std::getline(inFS, line);
+
+  std::stringstream ss(line);
+
+  ss >> width >> height;
   
   
   if(inFS.fail() || width > MAX_WIDTH || height > MAX_HEIGHT){
