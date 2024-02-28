@@ -62,7 +62,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   }
 
   inFS >> garbage;
-  if(!inFS.eof()){
+  if(!inFS.fail()){
     throw std::runtime_error("Too many values");
   }
 }
