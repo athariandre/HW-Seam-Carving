@@ -67,6 +67,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   }
 }
 
+
 void outputImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int width, unsigned int height) {
   std::ofstream outFS;
   outFS.open(filename);
