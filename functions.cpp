@@ -22,9 +22,9 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   string filetype;
   string garbage;
   int maxcolorval;
-  short pr;
-  short pg;
-  short pb;
+  unsigned short pr;
+  unsigned short pg;
+  unsigned short pb;
   inFS.open(filename);
   if(!inFS.is_open()){
     throw std::runtime_error("Failed to open " + filename);
@@ -47,7 +47,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   for(unsigned int i = 0; i < height; i++){
     for(unsigned int j = 0; j < width; j++){
       inFS >> pr >> pg >> pb;
-      if(!inFS.good() || pr >= 256 || pb >= 256 || pg >= 256 || pr < 0 || pb < 0 || pg < 0){
+      if(!inFS.good() || pr >= 256 || pb >= 256 || pg >= 256){
         throw std::runtime_error("Invalid color value");
       }
 
