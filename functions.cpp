@@ -49,11 +49,10 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
     for(unsigned int j = 0; j < width; j++){
 
       inFS >> pr >> pg >> pb;
+
       if (inFS.fail() || pr >= 256 || pr < 0 || pg >= 256 || pg < 0 || pb >= 256 || pb < 0) {
         throw std::runtime_error("Invalid color value");
       }
-
-
 
 
       Pixel p = {pr,pg,pb};
@@ -63,7 +62,7 @@ void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, 
   
 
   inFS >> garbage;
-  if(!inFS.eof()){
+  if(!inFS.fail()){
     throw std::runtime_error("Too many values");
   }
 }
