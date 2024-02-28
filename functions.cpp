@@ -20,7 +20,7 @@ void initializeImage(Pixel image[][MAX_HEIGHT]) {
 void loadImage(string filename, Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned int& height) {
   std::ifstream inFS;
   string filetype;
-  string garbage;
+  int garbage;
   int maxcolorval;
   short pr;
   short pg;
