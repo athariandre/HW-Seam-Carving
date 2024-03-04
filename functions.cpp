@@ -143,7 +143,7 @@ unsigned int loadVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int start_col,
   unsigned int leastEnergy;
   unsigned int curr_col;
   unsigned int l_col, r_col;
-
+  unsigned int leastEnergyCol;
 
   curr_col = start_col;
 
