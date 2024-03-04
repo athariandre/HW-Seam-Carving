@@ -148,19 +148,19 @@ unsigned int loadVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int start_col,
 
   seam[0] = curr_col;
 
-  for(unsigned int i = 1; i < height-1; i++){
+  for(unsigned int i = 1; i < height; i++){
     leastEnergyCol = curr_col;
     l_col = curr_col - 1;
     r_col = curr_col + 1;
 
     if(l_col >= 0){
-      if(energy(image, l_col, i+1, width, height) < energy(image, leastEnergyCol, i+1, width, height)){
+      if(energy(image, l_col, i, width, height) < energy(image, leastEnergyCol, i, width, height)){
         leastEnergyCol = l_col;
       }
     }
 
     if(r_col < width-1){
-      if(energy(image, r_col, i+1, width, height) < energy(image, leastEnergyCol, i+1, width, height)){
+      if(energy(image, r_col, i, width, height) < energy(image, leastEnergyCol, i, width, height)){
         leastEnergyCol = r_col;
       }
     }
