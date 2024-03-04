@@ -46,10 +46,6 @@ int main() {
     return 1;
   }
 
-  // TODO: add code to validate input (part 1)
-  // Exit program with error if there are problems with 
-  //   targetWidth or targetHeight
-
   cout << "Start carving..." << endl;
   
   // TODO: uncomment functions in the following while loop
