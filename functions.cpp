@@ -200,10 +200,10 @@ void findMinVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int width, unsigned
 
 void removeVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned int height, unsigned int verticalSeam[]) {
   int targetcol;
-  for(int i = 0; i < height; i++){
+  for(unsigned int i = 0; i < height; i++){
     targetcol = verticalSeam[i];
-    for(int j = targetcol; j < width-1; j++){
-      image[i][j] = image[i][j+1];
+    for(unsigned int j = targetcol; j < width-1; j++){
+      image[j][i] = image[j+1][i];
     }
   }
   width = width-1;
