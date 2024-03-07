@@ -139,8 +139,6 @@ unsigned int energy(Pixel image[][MAX_HEIGHT], unsigned int x, unsigned int y, u
 
 
 unsigned int loadVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int start_col, unsigned int width, unsigned int height, unsigned int seam[]) {
-  
-  // TODO: implement (part 2)
   unsigned int curr_col;
   int l_col, r_col;
   unsigned int leastEnergyCol;
