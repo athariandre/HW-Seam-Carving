@@ -244,7 +244,7 @@ void removeVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned
 }
 
 void removeHorizontalSeam(Pixel image[][MAX_HEIGHT], unsigned int width, unsigned int& height, unsigned int horizontalSeam[]) {
-  int targetrow
+  int targetrow;
   for(unsigned int i = 0; i < width; i++){
     targetrow = horizontalSeam[i];
     for(unsigned int j = targetrow; j < height-1; j++){
