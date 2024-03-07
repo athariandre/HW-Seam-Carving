@@ -202,6 +202,8 @@ unsigned int loadHorizontalSeam(Pixel image[][MAX_HEIGHT], unsigned int start_ro
         leastEnergyRow = r_row;
       }
     }
+    seam[i] = leastEnergyRow;
+    curr_row = leastEnergyRow;
   }
 
   unsigned int seamEnergy = 0;
