@@ -240,7 +240,7 @@ void removeVerticalSeam(Pixel image[][MAX_HEIGHT], unsigned int& width, unsigned
       image[j][i] = image[j+1][i];
     }
   }
-  width = width-1;
+  width--;
 }
 
 void removeHorizontalSeam(Pixel image[][MAX_HEIGHT], unsigned int width, unsigned int& height, unsigned int horizontalSeam[]) {
@@ -251,4 +251,5 @@ void removeHorizontalSeam(Pixel image[][MAX_HEIGHT], unsigned int width, unsigne
       image[i][j] = image[i][j+1];
     }
   }
+  height--;
 }
