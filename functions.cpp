@@ -193,13 +193,13 @@ unsigned int loadHorizontalSeam(Pixel image[][MAX_HEIGHT], unsigned int start_ro
 
     if(l_row >= 0){
       if(energy(image, i, l_row, width, height) < energy(image, i, leastEnergyRow, width, height)){
-        leastEnergyCol = l_col;
+        leastEnergyRow = l_row;
       }
     }
 
     if(r_row <= (int)height-1){
       if(energy(image, i, r_row, width, height) < energy(image, i, leastEnergyRow, width, height)){
-        leastEnergyCol = r_row;
+        leastEnergyRow = r_row;
       }
     }
   }
